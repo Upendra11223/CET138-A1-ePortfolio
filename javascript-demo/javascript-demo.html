@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #74ABE2, #5563DE);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .calculator {
+      background: rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      width: 300px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    #display {
+      width: 100%;
+      height: 50px;
+      font-size: 24px;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      text-align: right;
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    #keys {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      padding: 15px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: #ffffff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      background-color: #dfe6e9;
+      transform: scale(1.05);
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    /* Operator buttons */
+    button:nth-child(4n),
+    button:nth-last-child(1) {
+      background-color: #74ABE2;
+      color: white;
+    }
+
+    button:nth-child(4n):hover,
+    button:nth-last-child(1):hover {
+      background-color: #4a90e2;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1>Calculator</h1>
+    <label for="display" style="display:none;">Calculator Display</label>
+    <input id="display" type="text" readonly title="Calculator Display" placeholder="0" />
+    <div id="keys">
+      <button onclick="appendValue('7')">7</button>
+      <button onclick="appendValue('8')">8</button>
+      <button onclick="appendValue('9')">9</button>
+      <button onclick="setOperator('/')">÷</button>
+
+      <button onclick="appendValue('4')">4</button>
+      <button onclick="appendValue('5')">5</button>
+      <button onclick="appendValue('6')">6</button>
+      <button onclick="setOperator('*')">×</button>
+
+      <button onclick="appendValue('1')">1</button>
+      <button onclick="appendValue('2')">2</button>
+      <button onclick="appendValue('3')">3</button>
+      <button onclick="setOperator('-')">−</button>
+
+      <button onclick="appendValue('0')">0</button>
+      <button onclick="appendDecimal()">.</button>
+      <button onclick="calculateResult()">=</button>
+      <button onclick="setOperator('+')">+</button>
+
+      <button onclick="clearDisplay()">C</button>
+    </div>
+     <!-- Footer -->
+        <footer>
+      <small>Demonstration for CET138 — JavaScript section </small>
+    </footer>
+  </div>
+
+  <script>
+    // Calculator state
+    let currentInput = '0';
+    let previousValue = null;
+    let operator = null;
+    const display = document.getElementById('display');
+
+    // Update the UI display
+    function updateDisplay() {
+      display.value = currentInput;
+    }
+    updateDisplay();
+
+    // Append a digit (0-9)
+    function appendValue(digit) {
+      if (currentInput === '0') {
+        currentInput = digit;
+      } else {
+        currentInput += digit;
+      }
+      updateDisplay();
+    }
+
+    // Append a decimal point (prevent multiple decimals in one number)
+    function appendDecimal() {
+      if (!currentInput.includes('.')) {
+        currentInput += '.';
+        updateDisplay();
+      }
+    }
+
+    // Choose an operator (+, -, *, /)
+    function setOperator(op) {
+      if (operator && previousValue !== null) {
+        // Chain operations: compute intermediate result first
+        calculateResult();
+      }
+      previousValue = parseFloat(currentInput);
+      operator = op;
+      currentInput = '0';
+      updateDisplay();
+    }
+
+    // Compute result of previousValue (operator) currentInput
+    function calculateResult() {
+      if (operator === null || previousValue === null) return;
+
+      const currentValue = parseFloat(currentInput);
+      let result;
+
+      switch (operator) {
+        case '+': result = previousValue + currentValue; break;
+        case '-': result = previousValue - currentValue; break;
+        case '*': result = previousValue * currentValue; break;
+        case '/':
+          result = currentValue === 0 ? 'Error' : (previousValue / currentValue);
+          break;
+      }
+
+      currentInput = String(result);
+      previousValue = null;
+      operator = null;
+      updateDisplay();
+    }
+
+    // Clear everything
+    function clearDisplay() {
+      currentInput = '0';
+      previousValue = null;
+      operator = null;
+      updateDisplay();
+    }
+  </script>
+</body>
+</html>

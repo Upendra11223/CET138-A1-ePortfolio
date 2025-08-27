@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HTML Demo — Accessible Login (No CSS/JS)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="CET138 HTML-only demo showing semantic structure and an accessible form.">
+  </head>
+  <body>
+    <!-- Header landmark -->
+    <header>
+      <h1>HTML Demo — Login</h1>
+      <p>This page demonstrates semantic HTML and an accessible form without any CSS or JavaScript.</p>
+    </header>
+
+    <!-- Main landmark -->
+    <main>
+      <section aria-labelledby="login-title">
+        <h2 id="login-title">Log in to your account</h2>
+
+        <!-- HTML5 native validation only; action is a placeholder -->
+        <form action="/demo-login" method="post" novalidate>
+          <fieldset>
+            <legend>Credentials</legend>
+
+            <p id="email-help">Use your university email address.</p>
+            <label for="email">Email address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              inputmode="email"
+              autocomplete="username"
+              aria-describedby="email-help"
+              required>
+
+            <p id="password-help">Password must be at least 8 characters.</p>
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              minlength="8"
+              autocomplete="current-password"
+              aria-describedby="password-help"
+              required>
+
+            <label for="remember">
+              <input type="checkbox" id="remember" name="remember"> Remember me
+            </label>
+
+            <button type="submit">Sign in</button>
+          </fieldset>
+
+          <p>
+            <a href="/forgot-password" rel="nofollow">Forgot password?</a>
+          </p>
+        </form>
+      </section>
+    </main>
+
+    <!-- Footer landmark -->
+    <footer>
+      <small>Demonstration for CET138 — HTML section (no CSS/JS).</small>
+    </footer>
+  </body>
+</html>

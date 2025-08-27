@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>CET138 — ePortfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ePortfolio for CET138: HTML, CSS, Bootstrap and JavaScript demos with documentation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">CET138 ePortfolio</div>
+      <nav class="menu" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#demos">Demos</a>
+        <a href="#docs">Docs (PDF)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- About -->
+    <section id="about" class="container hero">
+      <div>
+        <h1>Web Fundamentals Portfolio</h1>
+        <p class="muted">
+          This portfolio presents my understanding of <strong>HTML</strong>, <strong>CSS</strong>, the
+          <strong>Bootstrap</strong> framework, and <strong>JavaScript</strong>.
+          Use the <em>Try Demo</em> buttons to open each live example.
+        </p>
+      </div>
+    </section>
+
+    <!-- Demo cards -->
+    <section id="demos" class="container">
+      <h2>Demo Pages</h2>
+      <div class="grid">
+        <!-- HTML -->
+        <article class="card">
+          <header class="card-head">
+            <h3>HTML Demo</h3>
+            <span class="tag">HTML</span>
+          </header>
+          <p class="muted">A semantic login page built with pure HTML. Demonstrates structural tags
+      (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;form&gt;</code>, <code>&lt;footer&gt;</code>),
+      semantic form elements, and accessibility attributes like <code>aria-describedby</code>.
+      No CSS or JavaScript — this is raw HTML showing structure only.</p>
+          <div class="actions">
+            <a class="btn primary" href="html-demo/html-demo.html" target="_blank" rel="noopener">Try Demo</a>
+          </div>
+        </article>
+
+        <!-- CSS -->
+        <article class="card">
+          <header class="card-head">
+            <h3>CSS Demo</h3>
+            <span class="tag">CSS</span>
+          </header>
+          <p class="muted">The same login page styled with modern CSS. Uses Flexbox and Grid for layout, a gradient background, smooth hover transitions, and responsive design. Demonstrates how presentation can be separated from structure to create a visually polished and accessible interface.</p>
+          <div class="actions">
+            <a class="btn primary" href="css-demo/css-demo.html" target="_blank" rel="noopener">Try Demo</a>
+          </div>
+        </article>
+
+        <!-- Bootstrap -->
+        <article class="card">
+          <header class="card-head">
+            <h3>Bootstrap Demo</h3>
+            <span class="tag">Bootstrap</span>
+          </header>
+          <p class="muted">A responsive page styled using only the Bootstrap CSS framework. Implements the 12-column grid, utility classes for spacing and alignment, and pre-styled components like cards and buttons. Shows how professional layouts can be achieved quickly without writing custom CSS.</p>
+          <div class="actions">
+            <a class="btn primary" href="bootstrap-demo/bootstrap-demo.html" target="_blank" rel="noopener">Try Demo</a>
+          </div>
+        </article>
+
+        <!-- JavaScript -->
+        <article class="card">
+          <header class="card-head">
+            <h3>JavaScript Demo</h3>
+            <span class="tag">JavaScript</span>
+          </header>
+          <p class="muted">A simple calculator built with vanilla JavaScript. Supports addition, subtraction, multiplication, and division. Demonstrates DOM manipulation, event handling, and basic app state management — showing how interactivity is added to otherwise static HTML/CSS pages.</p>
+          <div class="actions">
+            <a class="btn primary" href="javascript-demo/javascript-demo.html" target="_blank" rel="noopener">Try Demo</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PDFs -->
+    <section id="docs" class="container">
+      <h2>Documentation (PDF)</h2>
+      <p class="muted">These PDFs contain the write-ups for each section of the assignment.</p>
+      <ul class="pdf-list">
+        <li><a href="pdf/full-stack-section.pdf" target="_blank" rel="noopener">Full Stack Section</a></li>
+        <li><a href="pdf/html-section.pdf" target="_blank" rel="noopener">HTML Section</a></li>
+        <li><a href="pdf/css-section.pdf" target="_blank" rel="noopener">CSS Section</a></li>
+        <li><a href="pdf/bootstrap-section.pdf" target="_blank" rel="noopener">Bootstrap Section</a></li>
+        <li><a href="pdf/javascript-section.pdf" target="_blank" rel="noopener">JavaScript Section</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© <span id="year"></span> CET138 • ePortfolio</div>
+    <div class="container">© <span id="year"></span> Upendra Khanal</div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
